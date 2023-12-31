@@ -4,8 +4,10 @@ import  Productcomponent from"./Productcomponent"
 import axios from "axios";
 import { setProducts } from '../redux/actions/Productactions';
 const Productlisting = () => {
-const products=useSelector ((state)=>state)
+
+const products = useSelector((state) => state.allProducts.products);
 const dispatch=useDispatch()
+
 const fetchproducts=async()=>{
 
   const response=await axios.get("https://fakestoreapi.com/products")
@@ -19,15 +21,11 @@ const fetchproducts=async()=>{
 };
 
 useEffect(()=>{
-
 fetchproducts()
-
 },[])
 
 
-
-
-    return (
+return (
     <div className='ui grid container' style={{marginTop:"50px"}}>
     <Productcomponent/>
     </div>
